@@ -1,18 +1,453 @@
-html {
-  font-size: 14px;
+/* ========== ROOT THEME ========== */
+:root{
+  --bg:#0d1117;--card:#161b22;--accent:#58a6ff;--text:#c9d1d9;--dim:#8b949e;
+  --radius:14px;--shadow:0 6px 12px rgba(0,0,0,.35);--gap:1.35rem;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;scroll-behavior:smooth}
+@media(min-width:768px){html{font-size:16px}}
+body{
+  font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  overflow-x:hidden;margin-bottom:60px;
+}
+h1,h2,h3{font-weight:600;line-height:1.2;color:var(--accent)}
+h1{font-size:2.3rem}h2{font-size:1.75rem;margin-bottom:.8rem}
+h3{font-size:1.2rem;margin:.9rem 0 .4rem}
+a{color:var(--accent);text-decoration:none;transition:.25s}
+a:hover{color:#9ec9ff}img{display:block;width:100%;height:auto}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+/* ========== HERO & NAV ========== */
+.hero{background:linear-gradient(135deg,#111,#0c1020 35%,#061627);
+       padding:4rem 1rem 3rem;text-align:center}
+.nav{
+  max-width:1100px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;padding:.75rem 1rem
+}
+.brand{font-size:1.15rem;font-weight:600}
+
+/* desktop links */
+.nav-links{list-style:none;display:flex;gap:1.1rem}
+.nav-links a{display:block;padding:.8rem .6rem;width:100%;font-size:.95rem}
+
+/* burger icon + overlay */
+#nav-toggle{display:none}
+.burger{display:none;font-size:1.6rem;cursor:pointer;color:var(--accent)}
+.overlay{display:none}
+
+@media(max-width:640px){
+  .burger{
+    display:block;position:fixed;top:1rem;right:1rem;
+    z-index:1305;padding:.6rem               /* always above panel */
   }
+  .overlay{
+    display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);
+    opacity:0;pointer-events:none;transition:.25s;z-index:1200
+  }
+  #nav-toggle:checked ~ .overlay{opacity:1;pointer-events:auto}
+
+  .nav-links{
+    position:fixed;right:0;top:0;bottom:0;min-width:72%;max-width:300px;
+    background:var(--card);flex-direction:column;gap:1.4rem;
+    padding:5.3rem 2rem 2rem;transform:translateX(100%);transition:.25s;
+    z-index:1300;overflow-y:auto
+  }
+  #nav-toggle:checked ~ .overlay + .nav-links{transform:none}
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* avatar & hero */
+.avatar{width:150px;height:150px;border-radius:50%;overflow:hidden;
+        border:4px solid var(--accent);box-shadow:var(--shadow);margin:0 auto 1.4rem}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center}
+.subtitle{font-size:1.05rem;color:var(--dim)}
+.social{margin-top:1rem}
+.social a{display:inline-block;font-size:1.35rem;margin:0 .4rem;padding:.35rem;transition:.25s}
+.social a:hover{transform:translateY(-2px)}
+
+/* ========== CARD ========== */
+.card{max-width:1100px;margin:var(--gap) auto;background:var(--card);
+      border-radius:var(--radius);padding:2.3rem 1.8rem;box-shadow:var(--shadow)}
+.card ul{padding-left:1.1rem}.card ul li{margin:.25rem 0}
+.cv-download{text-align:center;margin-top:1rem}
+
+/* ========== SKILLS ========== */
+.skills-list{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;margin-top:1rem}
+.skills-list li{
+  padding:.48rem .95rem;border-radius:50rem;background:#10151f;
+  border:1px solid var(--accent);font-size:.92rem;user-select:none;
+  transition:background-color .2s,color .2s;
+}
+.skills-list li:hover,
+.skills-list li.active{background:var(--accent);color:#000}
+
+/* ========== PROJECTS ========== */
+.projects-list{list-style:none;display:grid;gap:var(--gap);margin-top:1rem;padding:0}
+@media(min-width:720px){.projects-list{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.projects-list{grid-template-columns:repeat(3,1fr)}}
+.project-item{background:#10151f;border:1px solid transparent;border-radius:var(--radius);
+  padding:1.35rem 1rem;box-shadow:var(--shadow);transition:.25s}
+.project-item:hover{border-color:var(--accent);transform:translateY(-3px)}
+.project-title{font-weight:bold;font-size:1.05rem;margin-bottom:.4rem}
+.project-description{font-size:.9rem;color:var(--text)}
+
+/* ========== CONTACT FORM ========== */
+.contact-form form{
+  display:grid;gap:1rem;margin-top:1rem;grid-template-columns:1fr;
+}
+.contact-form .field.full{grid-column:1/-1}
+@media(min-width:640px){.contact-form form{grid-template-columns:1fr 1fr}}
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+  background:#10151f;border:1px solid var(--accent);color:var(--text);
+  padding:.65rem 1rem;border-radius:var(--radius);font-size:1rem;width:100%;
+}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(88,166,255,.4)
+}
+.contact-form button{
+  grid-column:1/-1;justify-self:flex-start;cursor:pointer;
+  background:var(--accent);color:#000;border:none;padding:.6rem 1.4rem;
+  font-weight:600;border-radius:var(--radius);transition:.25s}
+.contact-form button:hover{background:#9ec9ff}
+
+/* ========== FOOTER ========== */
+footer{position:fixed;bottom:0;width:100%;height:40px;background:#121212;
+       color:var(--text);display:flex;justify-content:center;align-items:center;font-size:.85rem}
+
+/* ========== MISC ========== */
+.tip{font-size:.9rem;color:var(--dim);text-align:center;margin-top:-.4rem}
+
+/* ========== FEATURED PROJECTS & ACCESSIBILITY ========== */
+.project-title{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem
+}
+.project-title a,.project-title strong{min-width:0}
+.project-tag{
+  flex:0 0 auto;display:inline-flex;align-items:center;padding:.15rem .55rem;
+  border-radius:50rem;background:rgba(88,166,255,.12);border:1px solid var(--accent);
+  color:var(--accent);font-size:.72rem;font-weight:600;line-height:1.4
+}
+.featured-project{border-color:rgba(88,166,255,.45)}
+.social a:focus-visible,
+.nav-links a:focus-visible,
+.project-title a:focus-visible,
+.cv-download a:focus-visible{
+  outline:2px solid var(--accent);outline-offset:4px;border-radius:6px
 }
 
-body {
-  margin-bottom: 60px;
+/* ================================================================
+   CLASSIC ↔ FRUTIGER AQUA GIMMICK
+   The original dark portfolio remains the default. These rules only
+   activate while JavaScript adds .aqua-mode to <body>.
+   ================================================================ */
+
+/* Toggle button in the normal/classic navigation */
+.aqua-mode-control{display:flex;align-items:center}
+.aqua-toggle{
+  display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
+  min-height:38px;padding:.55rem .85rem;border:1px solid rgba(88,166,255,.55);
+  border-radius:999px;background:rgba(88,166,255,.08);color:var(--accent);
+  font:inherit;font-size:.88rem;font-weight:650;line-height:1;cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .2s ease,background .25s ease,color .25s ease,
+             border-color .25s ease,box-shadow .25s ease
+}
+.aqua-toggle:hover{
+  color:#d9efff;background:rgba(88,166,255,.18);border-color:var(--accent);
+  transform:translateY(-1px)
+}
+.aqua-toggle:active{transform:translateY(1px)}
+.aqua-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+
+/* Smooth visual morph between the original design and the gimmick */
+body,.hero,.nav,.card,.project-item,.skills-list li,.social a,
+.contact-form input,.contact-form select,.contact-form textarea,
+.contact-form button,footer,.aqua-toggle{
+  transition-property:background,background-color,color,border-color,
+                      box-shadow,transform,filter,opacity;
+  transition-duration:.55s;
+  transition-timing-function:cubic-bezier(.2,.75,.25,1)
+}
+
+/* Full page background: sky above, water and grass below */
+body.aqua-mode{
+  --bg:#dff8ff;
+  --card:rgba(255,255,255,.72);
+  --accent:#008dcc;
+  --text:#153d4f;
+  --dim:#397287;
+  --radius:28px;
+  --shadow:0 20px 55px rgba(0,113,151,.18),0 6px 18px rgba(13,100,126,.12);
+  color-scheme:light;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 86% 6%,rgba(255,247,136,.95) 0 54px,rgba(255,247,136,.32) 55px 100px,transparent 101px),
+    radial-gradient(ellipse at 12% 15%,rgba(255,255,255,.92) 0 6%,transparent 6.4%),
+    radial-gradient(ellipse at 18% 13%,rgba(255,255,255,.88) 0 5%,transparent 5.4%),
+    radial-gradient(ellipse at 72% 22%,rgba(255,255,255,.78) 0 7%,transparent 7.4%),
+    linear-gradient(180deg,#63d2ff 0,#b9f1ff 28rem,#eaffff 45rem,#b8ed79 60rem,#48b956 100%);
+  background-attachment:fixed;
+  margin-bottom:0
+}
+
+body.aqua-mode::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 72%,rgba(255,255,255,.75) 0 5px,rgba(105,224,255,.38) 6px 11px,transparent 12px),
+    radial-gradient(circle at 92% 68%,rgba(255,255,255,.78) 0 8px,rgba(100,220,255,.35) 9px 16px,transparent 17px),
+    radial-gradient(circle at 78% 88%,rgba(255,255,255,.72) 0 4px,rgba(100,220,255,.34) 5px 10px,transparent 11px),
+    linear-gradient(180deg,transparent 0 62%,rgba(14,162,211,.12) 62% 100%);
+  animation:aquaBackgroundDrift 12s ease-in-out infinite alternate
+}
+
+/* Hero scenery */
+body.aqua-mode .hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:520px;padding:2rem 1rem 5.8rem;
+  background:
+    radial-gradient(circle at 82% 18%,#fff78c 0 46px,rgba(255,244,110,.38) 47px 84px,transparent 85px),
+    linear-gradient(180deg,#59caff 0%,#bff4ff 68%,#e8ffff 100%);
+  border-bottom:5px solid rgba(255,255,255,.72);
+  box-shadow:0 16px 42px rgba(0,116,164,.2)
+}
+body.aqua-mode .hero::before{
+  content:"";position:absolute;left:-8%;right:-8%;bottom:-170px;height:310px;
+  z-index:0;border-radius:50% 54% 0 0/58% 65% 0 0;
+  background:
+    radial-gradient(ellipse at 70% 12%,rgba(255,255,255,.38) 0 7%,transparent 7.5%),
+    linear-gradient(180deg,#97e95f 0%,#4cc44e 42%,#168f42 100%);
+  box-shadow:inset 0 14px 20px rgba(255,255,255,.25),0 -8px 24px rgba(33,152,69,.16)
+}
+body.aqua-mode .hero::after{
+  content:"";position:absolute;left:-10%;right:-10%;bottom:-80px;height:145px;z-index:1;
+  border-radius:50% 48% 0 0/55% 55% 0 0;
+  background:linear-gradient(180deg,rgba(72,218,255,.88),rgba(0,148,214,.92));
+  border-top:5px solid rgba(255,255,255,.76);
+  box-shadow:inset 0 14px 22px rgba(255,255,255,.32)
+}
+body.aqua-mode .nav,body.aqua-mode .hero-content{position:relative;z-index:3}
+
+/* Glossy glass navigation */
+body.aqua-mode .nav{
+  padding:.55rem .75rem .55rem 1.2rem;border:1px solid rgba(255,255,255,.88);
+  border-radius:999px;background:rgba(255,255,255,.56);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.9),0 12px 34px rgba(0,118,164,.17)
+}
+body.aqua-mode .brand{
+  color:#056b92;font-weight:800;text-shadow:0 1px 0 rgba(255,255,255,.9)
+}
+body.aqua-mode .nav-links a{
+  color:#075f82;font-weight:700;border-radius:999px
+}
+body.aqua-mode .nav-links a:hover{
+  color:#fff;background:linear-gradient(180deg,#52d8ff,#008fcf);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.7),0 5px 13px rgba(0,123,173,.25)
+}
+body.aqua-mode .burger{color:#007caf}
+body.aqua-mode .overlay{background:rgba(0,68,93,.28);backdrop-filter:blur(3px)}
+
+/* Aqua-mode switch becomes a glossy "return" control */
+body.aqua-mode .aqua-toggle{
+  color:#064f42;border-color:rgba(255,255,255,.92);
+  background:linear-gradient(180deg,#c9ff93 0%,#65dc61 50%,#29ad4a 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),inset 0 -2px 7px rgba(0,98,49,.18),
+             0 7px 16px rgba(0,111,78,.23);
+  text-shadow:0 1px 0 rgba(255,255,255,.65)
+}
+body.aqua-mode .aqua-toggle:hover{
+  color:#fff;background:linear-gradient(180deg,#92f777,#36c856 58%,#168d3e);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.78),0 10px 20px rgba(0,105,69,.3)
+}
+
+/* Hero identity */
+body.aqua-mode .hero-content{padding-top:4.2rem}
+body.aqua-mode .hero-content::before{
+  content:"";position:absolute;width:76px;height:27px;left:5%;top:22%;z-index:-1;
+  border-radius:999px;background:rgba(255,255,255,.88);
+  box-shadow:24px -15px 0 -3px rgba(255,255,255,.91),49px 0 0 -8px rgba(255,255,255,.86),
+             690px 30px 0 2px rgba(255,255,255,.72),735px 13px 0 -7px rgba(255,255,255,.76)
+}
+body.aqua-mode .hero-content::after{
+  content:"";position:absolute;width:13px;height:13px;right:12%;bottom:4%;z-index:-1;
+  border:2px solid rgba(255,255,255,.88);border-radius:50%;
+  background:rgba(116,224,255,.18);
+  box-shadow:-52px -38px 0 5px rgba(255,255,255,.32),24px -76px 0 10px rgba(255,255,255,.22),
+             -590px -20px 0 3px rgba(255,255,255,.3),-650px -92px 0 7px rgba(255,255,255,.2);
+  animation:aquaBubbleFloat 5s ease-in-out infinite alternate
+}
+body.aqua-mode .avatar{
+  width:174px;height:174px;border:7px solid rgba(255,255,255,.92);
+  outline:5px solid rgba(0,168,222,.62);
+  background:#fff;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.75),0 18px 35px rgba(0,108,154,.27)
+}
+body.aqua-mode .hero h1{
+  color:#006d9c;font-size:2.65rem;font-weight:850;letter-spacing:-.035em;
+  text-shadow:0 2px 0 #fff,0 5px 16px rgba(0,100,143,.2)
+}
+body.aqua-mode .hero h1 .accent{color:#16a54c}
+body.aqua-mode .subtitle{
+  color:#175e75;font-weight:700;text-shadow:0 1px 0 rgba(255,255,255,.85)
+}
+body.aqua-mode .social{display:flex;justify-content:center;gap:.45rem;flex-wrap:wrap}
+body.aqua-mode .social a{
+  width:43px;height:43px;margin:0;display:inline-flex;align-items:center;justify-content:center;
+  color:#006e9e;border:1px solid rgba(255,255,255,.9);border-radius:50%;
+  background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(177,240,255,.7));
+  box-shadow:inset 0 2px 0 #fff,0 7px 15px rgba(0,112,154,.2)
+}
+body.aqua-mode .social a:hover{
+  color:#fff;background:linear-gradient(145deg,#50dbff,#008ecb);
+  transform:translateY(-4px) scale(1.05)
+}
+
+/* Glass content islands */
+body.aqua-mode .card{
+  position:relative;overflow:hidden;margin:2rem auto;
+  color:#173c4d;background:rgba(255,255,255,.73);
+  border:2px solid rgba(255,255,255,.86);border-radius:30px;
+  -webkit-backdrop-filter:blur(16px) saturate(145%);
+  backdrop-filter:blur(16px) saturate(145%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.92),inset 0 -1px 0 rgba(0,135,176,.1),
+             0 22px 52px rgba(0,104,136,.19),0 6px 15px rgba(30,128,89,.1)
+}
+body.aqua-mode .card::before{
+  content:"";position:absolute;left:3%;right:3%;top:0;height:4px;border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,transparent,#fff 20%,#75e7ff 50%,#fff 80%,transparent);
+  opacity:.85
+}
+body.aqua-mode .card:hover{transform:translateY(-3px)}
+body.aqua-mode h2,body.aqua-mode h3{
+  color:#0076a7;text-shadow:0 1px 0 rgba(255,255,255,.9)
+}
+body.aqua-mode h2{font-weight:850;letter-spacing:-.025em}
+body.aqua-mode h3{color:#138a4a}
+body.aqua-mode a{color:#0079ad;font-weight:650}
+body.aqua-mode a:hover{color:#0b9d4a}
+body.aqua-mode .card p + p{margin-top:1rem}
+body.aqua-mode .card ul li::marker{color:#21a84f}
+body.aqua-mode .cv-download a{
+  display:inline-flex;padding:.65rem 1.15rem;border-radius:999px;color:#fff;
+  background:linear-gradient(180deg,#49d8ff,#008bc7);
+  border:1px solid rgba(255,255,255,.86);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.65),0 8px 18px rgba(0,119,166,.24)
+}
+
+/* Skill bubbles */
+body.aqua-mode .skills-list{padding-left:0}
+body.aqua-mode .skills-list li{
+  position:relative;overflow:hidden;color:#075b75;font-weight:700;
+  background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(181,242,255,.82));
+  border:1px solid rgba(0,157,204,.45);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.95),0 5px 12px rgba(0,121,158,.13)
+}
+body.aqua-mode .skills-list li::before{
+  content:"";position:absolute;left:16%;right:16%;top:3px;height:35%;border-radius:999px;
+  background:rgba(255,255,255,.52);pointer-events:none
+}
+body.aqua-mode .skills-list li:hover,
+body.aqua-mode .skills-list li.active{
+  color:#064c35;border-color:#fff;
+  background:linear-gradient(180deg,#c8ff8e,#4dd75a 58%,#24aa49);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.8),0 8px 16px rgba(20,147,72,.22);
+  transform:translateY(-3px)
+}
+
+/* Glossy project tiles */
+body.aqua-mode .projects-list{gap:1.1rem}
+body.aqua-mode .project-item{
+  position:relative;overflow:hidden;color:#174153;
+  background:
+    radial-gradient(circle at 88% 10%,rgba(255,255,255,.76) 0 10%,transparent 10.5%),
+    linear-gradient(145deg,rgba(255,255,255,.93),rgba(193,247,255,.78));
+  border:2px solid rgba(255,255,255,.92);border-radius:24px;
+  box-shadow:inset 0 2px 0 #fff,0 12px 26px rgba(0,120,157,.16)
+}
+body.aqua-mode .project-item:nth-child(3n+2){
+  background:linear-gradient(145deg,rgba(248,255,232,.96),rgba(190,246,172,.8))
+}
+body.aqua-mode .project-item:hover{
+  border-color:#57dfff;transform:translateY(-7px) rotate(-.25deg);
+  box-shadow:inset 0 2px 0 #fff,0 18px 34px rgba(0,124,163,.24)
+}
+body.aqua-mode .project-title a,body.aqua-mode .project-title strong{color:#006c98}
+body.aqua-mode .project-description{color:#315e6c}
+body.aqua-mode .project-tag{
+  color:#075f3d;border-color:rgba(255,255,255,.9);
+  background:linear-gradient(180deg,#d5ff9f,#54d75d);
+  box-shadow:inset 0 1px 0 #fff,0 4px 10px rgba(0,134,62,.16)
+}
+body.aqua-mode .featured-project{border-color:rgba(28,194,219,.7)}
+
+/* Contact bubble panel */
+body.aqua-mode .contact-form input,
+body.aqua-mode .contact-form select,
+body.aqua-mode .contact-form textarea{
+  color:#173f50;background:rgba(255,255,255,.78);
+  border:2px solid rgba(0,156,204,.35);border-radius:18px;
+  box-shadow:inset 0 2px 6px rgba(0,122,158,.08),0 1px 0 #fff
+}
+body.aqua-mode .contact-form input:focus,
+body.aqua-mode .contact-form select:focus,
+body.aqua-mode .contact-form textarea:focus{
+  border-color:#19bddd;box-shadow:0 0 0 4px rgba(39,205,235,.22),inset 0 2px 6px rgba(0,122,158,.07)
+}
+body.aqua-mode .contact-form button{
+  color:#064e36;border:1px solid rgba(255,255,255,.9);border-radius:999px;
+  background:linear-gradient(180deg,#d2ff98 0%,#5ede62 55%,#20a948 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.8),0 8px 18px rgba(0,133,70,.22)
+}
+body.aqua-mode .contact-form button:hover{
+  color:#fff;background:linear-gradient(180deg,#84ed70,#2fbd4f 60%,#168d3d);
+  transform:translateY(-2px)
+}
+body.aqua-mode .tip{color:#397184}
+
+/* Footer changes only while Aqua mode is active */
+body.aqua-mode footer{
+  position:relative;height:auto;margin-top:2rem;padding:1.25rem;
+  color:#07523f;background:linear-gradient(180deg,rgba(179,247,130,.9),rgba(50,176,78,.95));
+  border-top:3px solid rgba(255,255,255,.78);
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.28),0 -8px 22px rgba(0,113,78,.12)
+}
+
+/* Mobile Aqua navigation remains usable */
+@media(max-width:640px){
+  .aqua-mode-control{width:100%}
+  .aqua-toggle{width:100%;min-height:44px}
+  body.aqua-mode .nav{background:transparent;border:0;box-shadow:none;backdrop-filter:none;padding:.75rem 1rem}
+  body.aqua-mode .burger{
+    color:#006d98;background:rgba(255,255,255,.78);border:1px solid #fff;
+    border-radius:50%;box-shadow:0 7px 17px rgba(0,111,149,.2)
+  }
+  body.aqua-mode .nav-links{
+    background:rgba(238,255,255,.94);border-left:2px solid rgba(255,255,255,.85);
+    box-shadow:-15px 0 40px rgba(0,93,128,.2);backdrop-filter:blur(18px)
+  }
+  body.aqua-mode .hero{min-height:560px;padding-top:4rem}
+  body.aqua-mode .hero-content::before{display:none}
+  body.aqua-mode .card{margin:1rem .75rem;padding:1.65rem 1.1rem;border-radius:24px}
+}
+
+@keyframes aquaBackgroundDrift{
+  from{transform:translateY(0)}
+  to{transform:translateY(-9px)}
+}
+@keyframes aquaBubbleFloat{
+  from{transform:translateY(8px) scale(.96)}
+  to{transform:translateY(-13px) scale(1.04)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body,.hero,.nav,.card,.project-item,.skills-list li,.social a,
+  .contact-form input,.contact-form select,.contact-form textarea,
+  .contact-form button,footer,.aqua-toggle{transition:none!important}
+  body.aqua-mode::before,body.aqua-mode .hero-content::after{animation:none!important}
 }

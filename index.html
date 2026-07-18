@@ -1,497 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- author: Kaan Nakipoglu -->
-    <!-- email: kaan.n@hotmail.com -->
-    <!-- Please get in touch before using -->
+  <!-- author: Kaan Nakipoğlu | email: kaan.n@hotmail.com -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kaan Nakipoğlu</title>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kaan Nakipoğlu</title>
-    <link rel="icon" href="images/Kaan_Nakipoglu_Icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/site.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000000;
-            color: #E0E0E0;
-            padding-bottom: 60px;
-        }
+  <meta name="description"
+        content="Kaan Nakipoğlu is a Software Engineering MSc candidate at TU Wien. Portfolio featuring AI, machine learning, LLM, data science, Flutter, and full stack projects.">
 
-        .container {
-            display: grid;
-            grid-template-rows: auto auto 1fr;
-            grid-template-columns: 1fr 2fr 1fr;
-            grid-template-areas:
-                "background background background"
-                "cv photo-and-links projects"
-                "cv bio projects";
-            min-height: calc(100vh - 60px);
-            gap: 20px;
-            padding: 20px;
-        }
+  <meta name="keywords"
+        content="Kaan Nakipoğlu, Kaan Nakipoglu,Kaan Nakip,Nakip Kaan, nakip kaan, nakipkaan, kaannakip,Türk Bilişim Derneği, TBD, Turkish Informatics Association, IEEE, Nakipoglu Kaan, nakipoğlu kaan, nakipoglu kaan, nakipoglukaan, kaannakipoglu, Kaan Nakipoğlu software engineer, Kaan Nakipoglu software engineer, Nakipoğlu, Nakipoglu, nakipoğlu, nakipoglu, nakip, software, software engineering, software engineer, software developer, software development, Yazılım, Yazılım Mühendisliği, Yazılım Mühendisi, Yapay Zekâ, Yapay zeka, AI, Artificial Intelligence, ML, Machine Learning, Makine Öğrenmesi, data science, data scientist, portfolio, personal website, KaanNakipoglu.com, Izmir University of Economics, İzmir University of Economics, IUE, İEÜ, Izmir Ekonomi Üniversitesi, İzmir Ekonomi, Izmir Univ of Economics, TU Wien, Technische Universität Wien, Vienna University of Technology, Wien, Vienna, BAL, Bornova Anadolu Lisesi, Bornova Anatolian High School, Izmir, İzmir, Turkey, Türkiye, Divine project, NakipsPDFMerger, Analyzing Traffic Patterns in Izmir, DotsAndLinesSquareGame, Cocktailous, Skill Sharing Project, Gas Distribution System, Eventful, Green Campus, Graph Coloring Problem, Hero of the Dungeon, Seabin, The Cave, computer science, Erasmus Rome, Università degli Studi Niccolò Cusano, Niccolò Cusano University, EU student, software solutions engineer, AI enthusiast, ML enthusiast, TU Wien MSc, MSc Software Engineering, Claude Code, OpenAI Codex, Kaggle, Large Language Models, LLM, Generative AI, Google Vertex AI, Gemini, LangChain, LangGraph, spaCy, Natural Language Processing, NLP, Named Entity Recognition, NER, FastAPI, Docker, LightGBM, Semantic Anonymizer, Trendyol E-Commerce Competition">
 
-        .background {
-            grid-area: background;
-            background-color: #121212;
-            text-align: center;
-            padding: 40px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .photo-and-links {
-            grid-area: photo-and-links;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-bottom: 20px;
-        }
-
-        .photo {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid deepskyblue;
-            box-shadow: 0px 4px 8px deepskyblue;
-            margin-top: -75px;
-            margin-bottom: 15px;
-            z-index: 10;
-        }
-
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .cv, .bio, .projects {
-            padding: 20px;
-            background-color: #121212;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-
-        .cv {
-            grid-area: cv;
-        }
-
-        .bio {
-            grid-area: bio;
-            text-align: center;
-            margin-top: -20px;
-        }
-
-        .projects {
-            grid-area: projects;
-        }
-
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .links a {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 12px;
-            background-color: #000000;
-            color: deepskyblue;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-            font-size: 0.95em;
-        }
-
-        .links a:hover {
-            background-color: deepskyblue;
-            color: #000000;
-        }
-
-        .links a i {
-            margin-right: 6px;
-            font-size: 1.4em;
-        }
-
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skills-list li {
-            background-color: #000000;
-            color: deepskyblue;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1.1em;
-            text-align: center;
-            box-shadow: 0px 2px 6px rgba(0, 255, 157, 0.2);
-            transition: transform 0.2s, background-color 0.3s;
-            border: 1px solid deepskyblue;
-        }
-
-        .skills-list li:hover, .skills-list li.active {
-            background-color: deepskyblue;
-            color: #000000;
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-
-        h2, h3 {
-            color: deepskyblue;
-            text-align: center;
-        }
-
-        h1 {
-            color: deepskyblue;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #121212;
-            color: #E0E0E0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 40px;
-        }
-
-        a {
-            text-decoration: none;
-            color: deepskyblue;
-        }
-
-        a:hover {
-            color: #FFFFFF;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .project-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid deepskyblue;
-            border-radius: 5px;
-        }
-
-        .project-item:hover {
-            background-color: #1a1a1a;
-        }
-
-        .project-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .project-description {
-            font-size: 0.9em;
-        }
-
-        .cv h2 {
-            text-align: center;
-        }
-    </style>
+  <link rel="icon" href="images/Kaan_Nakipoglu_Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="background">
-            <h1>Welcome to Kaan Nakipoğlu's Website!</h1>
-        </div>
+<!-- ───────── HERO / NAV ───────── -->
+<header class="hero">
+  <nav class="nav">
+    <span class="brand">Kaan&nbsp;Nakipoğlu</span>
 
-        <div class="photo-and-links">
-            <div class="photo">
-                <img src="images/kaan-nakipoglu22.jpg" alt="Profile Photo" />
-            </div>
+    <!-- burger checkbox -->
+    <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+    <!-- visible burger -->
+    <label for="nav-toggle" class="burger" aria-label="Open navigation"><i class="fas fa-bars"></i></label>
+    <!-- overlay to close menu -->
+    <label for="nav-toggle" class="overlay"></label>
 
-            <div class="links">
-                <a href="https://github.com/KaanNakipoglu" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/kaan-nakipoglu-9b2502181" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="mailto:kaan.n@hotmail.com"><i class="fas fa-envelope"></i> Email</a>
-            </div>
-        </div>
+    <ul class="nav-links">
+      <li><a href="#bio">About</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="aqua-mode-control">
+        <button id="aqua-toggle-button" class="aqua-toggle" type="button"
+                aria-pressed="false" aria-label="Turn on Frutiger Aqua mode"
+                title="Turn on Frutiger Aqua mode">
+          <i class="fas fa-water" aria-hidden="true"></i>
+          <span class="aqua-toggle-label">Aqua Mode</span>
+        </button>
+      </li>
+      <li><a href="images/Resume_KaanNakipoglu.pdf" target="_blank" rel="noopener noreferrer">
+        Download&nbsp;CV <i class="fas fa-arrow-up-right-from-square small"></i></a></li>
+    </ul>
+  </nav>
 
-        <div class="cv">
-            <h2>CV</h2>
-            <h3>Education</h3>
-            <ul>
-                <li>Computer Science/Software Engineering, <strong><a href="https://www.unicusano.it/en/">Università degli Studi Niccolò Cusano</a></strong> (02/2023 – 07/2023) | Rome, Italy</li>
-                <li>Software Engineering, <strong><a href="https://www.ieu.edu.tr/en">Izmir University of Economics</a></strong> (08/2020 – 07/2024) | Izmir, Turkey | GPA: 3.16/4.00</li>
-                <li>High School, <strong><a href="https://izmirbal.meb.k12.tr/">Bornova Anatolian High School</a></strong> (09/2016 – 06/2020) | Izmir, Turkey| GPA: 95.79/100.00</li>
-            </ul>
+  <div class="hero-content">
+    <div class="avatar">
+      <img src="images/kaan-nakipoglu22.jpg" alt="Kaan Nakipoğlu">
+    </div>
+    <h1>Hi, I'm <span class="accent">Kaan</span></h1>
+    <p class="subtitle">Software Engineering MSc&nbsp;@ TU&nbsp;Wien · Software Engineer · AI&nbsp;&amp;&nbsp;ML</p>
 
-            <h3>Professional Experience</h3>
-            <ul>
-                <li>Student Mentor, <strong><a href="https://www.ieu.edu.tr/en">Izmir University of Economics</a></strong> (08/2023 – 03/2024)</li>
-                <li>Product Development Team-Software Solutions Engineer, <strong><a href="https://monovi.com.tr/">Monovi Bilgi Teknolojileri</a></strong> (08/2023 – 09/2023)</li>
-            </ul>
+    <div class="social" aria-label="Professional profiles">
+      <a href="https://github.com/KaanNakipoglu" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/kaannakipoglu" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.kaggle.com/kaannakipoglu" target="_blank" rel="noopener noreferrer" aria-label="Kaggle" title="Kaggle"><i class="fab fa-kaggle"></i></a>
+      <a href="https://orcid.org/0009-0004-2670-7183" target="_blank" rel="noopener noreferrer" aria-label="ORCID" title="ORCID"><i class="fab fa-orcid"></i></a>
+      <a href="mailto:kaan.n@hotmail.com" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</header>
 
-            <h3>Achievements</h3>
-            <ul>
-                <li><a href="http://asyu.inista.org/EN/index.html">Our article "Analyzing Traffic Patterns in Izmir: A Study on Time Intervals and Route Congestion" is accepted by ASYU(Innovations in Intelligent Systems and Applications Conference)</a></li>
-                <li><a href="https://www.ieu.edu.tr/en/news/type/read/id/9180">2nd Place in "Genç Beyinler Yeni Fikirler" (2024)</a></li>
-                <li>Honour Student, Izmir University of Economics (2020-2024)</li>
-                <li>4th year Spring Term Honour Student (2024)</li>
-                <li>4th year Fall Term Honour Student (2023)</li>
-                <li>3rd year Spring Term Honour Student (2023)</li>
-                <li>2nd year Spring Term Honour Student (2022)</li>
-                <li>1st year Spring Term Honour Student (2021)</li>
-                <li>1st year Fall Term Honour Student (2020)</li>
-            </ul>
 
-            <center><p><a href="images/Resume_KaanNakipoglu.pdf" target="_blank">Download Full CV</a></p></center>
-        </div>
+<!-- ───────── BIO ───────── -->
+<section id="bio" class="card">
+  <h2>Bio</h2>
+  <p>Hello, I'm <strong>Kaan Nakipoğlu</strong>, a <strong>Software Engineer</strong> and <strong>Software Engineering MSc candidate</strong> at <strong><a href="https://www.tuwien.at/" target="_blank" rel="noopener noreferrer">Technische Universität Wien (TU Wien)</a></strong>. My main interests are <strong>Artificial Intelligence</strong>, <strong>Machine Learning</strong>, <strong>Data Science</strong>, and <strong>full-stack software development</strong>. I earned my Bachelor's degree in Software Engineering from <strong><a href="https://www.ieu.edu.tr/en" target="_blank" rel="noopener noreferrer">Izmir University of Economics</a></strong>, graduating with honors and a GPA of 3.16/4.00, and completed an Erasmus study period at <strong><a href="https://www.unicusano.it/en/" target="_blank" rel="noopener noreferrer">Università degli Studi Niccolò Cusano</a></strong> in Rome.</p>
 
-        <div class="bio">
-            <h2>Bio</h2>
-            <p>Hello, I'm <strong>Kaan Nakipoğlu</strong>, a passionate <strong>Software Engineer</strong> with interest in <strong>AI</strong>, <strong>Machine Learning</strong>,<strong>Data Science</strong> and a wide range of <strong>software development</strong> technologies. I hold a Bachelor's degree in <strong>Software Engineering</strong> from the <strong>Izmir University of Economics</strong>, where I graduated with honors and a GPA of 3.16/4.00. Additionally, I have international experience through my <strong>Erasmus</strong> studies at <strong>Università degli Studi Niccolò Cusano</strong> in Italy.</p>
-            <p>With a background that spans roles in <strong>product development</strong>, <strong>data analysis</strong>, and <strong>software solutions engineering</strong>, I've worked on numerous projects, including AI-driven studies, mobile and desktop applications, and system automation. My technical skills encompass <strong>Java</strong>, <strong>Python</strong>, <strong>C#</strong>, <strong>SQL</strong>, <strong>.NET</strong>, and <strong>Flutter</strong>, among many others.</p>
-            <p>Currently, I am <strong>actively seeking new opportunities</strong> where I can apply my skills to impactful projects. I'm open to work and available for communication through <a href="https://www.linkedin.com/in/kaan-nakipoglu-9b2502181">LinkedIn</a> or via <a href="mailto:kaan.n@hotmail.com">email</a>. Feel free to explore my <a href="https://github.com/KaanNakipoglu">GitHub</a> to check out some of my projects.</p>
-            <h3>Skills</h3>
-            <ul class="skills-list">
-                <li>Java</li>
-                <li>C</li>
-                <li>Python</li>
-                <li>SQL</li>
-                <li>OOP</li>
-                <li>Git</li>
-                <li>Software Design</li>
-                <li>.NET</li>
-                <li>JavaScript</li>
-                <li>C#</li>
-                <li>CSS</li>
-                <li>Flutter</li>
-                <li>Machine Learning Algorithms</li>
-                <li>Algorithm Design</li>
-                <li>Data Structures</li>
-                <li>Database Design</li>
-                <li>UML</li>
-                <li>Rest API</li>
-                <li>Web Development</li>
-                <li>Firebase</li>
-                <li>Leadership</li>
-                <li>Team Player</li>
-                <li>Software Architecture</li>
-                <li>Microsoft Office</li>
-                <li>MAUI</li>
-                <li>XML</li>
-                <li>Bootstrap</li>
-                <li>HTML</li>
-                <li>Dart</li>
-                <li>Kotlin</li>
-                <li>Communication</li>
-                <li>Management</li>
-                <li>MVC</li>
-                <li>Enterprise Architect</li>
-                <li>MySQL</li>
-                <li>SQLite</li>
-                <li>Mobile Development</li>
-                <li>ASP.NET Core</li>
-                <li>Scrum</li>
-                <li>Agile Development</li>
-                <li>SRS</li>
-                <li>Software Testing</li>
-                <li>Data Science</li>
-                <li>Analytical Thinking</li>
-                <li>Design Patterns</li>
-                <li>Desktop App Development</li>
-                <li>Data Analysis</li>
-                <li>Node.js</li>
-                <li>Vue.js</li>
-                <li>NoSQL</li>
-                <li>Java FX</li>
-                <li>Java Swing</li>
-                <li>Frontend Development</li>
-                <li>Fullstack Development</li>
-                <li>Backend Development</li>
-                <li>Microsoft SQL Server</li>
-                <li>Game Design</li>
-                <li>Tabletop Simulator</li>
-            </ul>
-        </div>
+  <p>My recent work includes <strong>privacy-focused LLM systems</strong>, <strong>machine-learning competition pipelines</strong>, mobile and desktop applications, data analysis, and software automation. I work with technologies such as <strong>Python</strong>, <strong>Java</strong>, <strong>C#</strong>, <strong>Dart</strong>, <strong>SQL</strong>, <strong>.NET</strong>, <strong>Flutter</strong>, and <strong>Firebase</strong>, and I use modern AI-assisted development tools including <strong>Claude Code</strong> and <strong>OpenAI Codex</strong>.</p>
 
-        <div class="projects">
-            <h2>Projects</h2>
-            <center>
-                <p><em>Click on each project to see which skills I used.</em></p>
-            </center>
+  <p>I am currently seeking <strong>student, part-time, and internship opportunities</strong> in software engineering, AI/ML, and data-focused development. Feel free to contact me through this form, <a href="mailto:kaan.n@hotmail.com">email</a>, or <a href="https://www.linkedin.com/in/kaannakipoglu" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+</section>
 
-            <ul>
-                <li class="project-item">
-                    <div class="project-title"><a href="https://www.kaannakipoglu.com" data-skills="HTML,CSS,JavaScript,Responsive Design,UI/UX,Version Control,Git,Web Development">Kaan Nakipoglu Website:</a></div>
-                    <div class="project-description">A personal website built from scratch to showcase my professional experience, skills, and projects (2024)</div>
-                </li>
-                
-                <li class="project-item">
-                    <div class="project-title"><a href="https://github.com/KaanNakipoglu/NakipsPDFMerger" data-skills="Git,Desktop App Development,Python,Software Design,Analytical Thinking,Git">NakipsPDFMerger:</a></div>
-                    <div class="project-description">A desktop application to merge PDFs (2024)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><a href="http://asyu.inista.org/EN/index.html" data-skills="Git,Python,Data Analysis,Data Science,Analytical Thinking,Communication,Team Player,Machine Learning Algorithms,Algorithm Design,Scrum,Agile Development,Git">Analyzing Traffic Patterns in Izmir: A Study on Time Intervals and Route Congestion:</a></div>
-                    <div class="project-description">A study on busy hours and congestion, accepted by ASYU conference (02/2024 – 08/2024)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Git,Mobile Development,Flutter,Dart,Analytical Thinking,Leadership,Management,SRS,Enterprise Architect,CSS,JavaScript,HTML,Web Development,Software Design,Software Architecture,Firebase,UML,NoSQL,OOP,Git,Algorithm Design,Communication,Scrum,Agile Development,Node.js,Software Testing,MVC,Fullstack Development">Divine:</strong></div>
-                    <div class="project-description">A system to increase interaction between performer and crowd (10/2023 – present)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><a href="https://github.com/KaanNakipoglu/DotsAndLinesSquareGame" data-skills="Git,Java,OOP,SQLite,Database Design,SRS,Software Design,Team Player,Analytical Thinking,Algorithm Design,UML,Enterprise Architect,Scrum,Agile Mobile Development,Flutter,Dart,Analytical Thinking,Leadership,Management,SRS,Enterprise Architect,CSS,JavaScript,HTML,Web Development,Python,Software Design,Software Architecture,Firebase,UML,NoSQL,OOP,Git,Algorithm Design,Communication,Scrum,Agile Development,Software Testing,SQL,Desktop App Development,Java FX,Fullstack Development,Design Patterns">DotsAndLinesSquareGame:</a></div>
-                    <div class="project-description">A multiplayer game where players draw lines between dots to form squares (2023)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Git,Rest API,JavaScript,HTML,CSS,Web Development,Team Player,.NET,Mobile Development,MAUI,SRS,Software Design,Analytical Thinking,Scrum,C#,Software Architect,Database Design,SQL,Microsoft SQL Server">Skill Sharing Project:</strong></div>
-                    <div class="project-description">A platform for users to share skills and give courses (08/2023 – 09/2023)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Git,SRS,Software Design,Enterprise Architect,UML,Leadership,Analytichal Thinking,Database Design, Algorith Design,Communication">Gas Distribution System (GDS):</strong></div>
-                    <div class="project-description">Order automation and efficiency in logistics software (2022 – 2023)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Git,Flutter,Dart,Firebase,NoSQL,Fullstack Development,Mobile Development,Algorithm Design">Cocktailous:</strong></div>
-                    <div class="project-description">Cocktail-themed mobile application (2022 – 2023)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="SRS,Game Design,Tabletop Simulator,Leadership,Communication">Z!NK:</strong></div>
-                    <div class="project-description">Board game (2022)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><a href="https://github.com/KaanNakipoglu/SimpleATM" data-skills="Java,OOP">SimpleATM:</a></div>
-                    <div class="project-description">A simple ATM simulation program demonstrating OOP principles (2022)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Git,Java,SRS,Leadership,Software Design,Analytical Thinking,Communication,OOP,UML,Enterprise Architect,Scrum,Agile Development,Software Architect,">Eventful:</strong></div>
-                    <div class="project-description">Social media project (2022)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Leadership,UML,Management,Analytical Thinking,Communication,SRS">Green Campus:</strong></div>
-                    <div class="project-description">Clean energy project (2022)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><a href="https://github.com/KaanNakipoglu/ColorMapping" data-skills="Git,Python,Algorithm Design,Leadership,Management,Scrum,Agile Development,Fullstack Development,SRS,Desktop App Development">Graph Coloring Problem:</a></div>
-                    <div class="project-description">Algorithm program (2022)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><a href="https://github.com/KaanNakipoglu/TextBasedDungeonGame" data-skills="Git,Java,SRS,Game Design,OOP,Leadership,Management,Scrum,Agile Development,Fullstack  Development,Software Design,Software Architect,UML,Algorithm Design,">Hero of the Dungeon:</a></div>
-                    <div class="project-description">Text-based RPG game (2021)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Java,SRS,Leadership,Software Design,Analytical Thinking,Communication,OOP,UML,Enterprise Architect,Scrum,Agile Development,Software Architect,">Seabin:</strong></div>
-                    <div class="project-description">Clean environment project (2021)</div>
-                </li>
-                <li class="project-item">
-                    <div class="project-title"><strong data-skills="Git,Java,SRS,Game Design,OOP,Leadership,Management,Scrum,Agile Development,Fullstack  Development,Software Design,Software Architect,UML,Algorithm Design,">The Cave:</strong></div>
-                    <div class="project-description">Text-based RPG game (2020)</div>
-                </li>
-            </ul>
-        </div>
+
+<!-- ───────── CV ───────── -->
+<section id="cv" class="card">
+  <h2>CV</h2>
+
+  <h3>Education</h3>
+  <ul>
+    <li>Master of Science (MSc) Software Engineering, <strong><a href="https://www.tuwien.at/" target="_blank" rel="noopener noreferrer">Technische Universität Wien</a></strong> (10/2025 – Present) · Vienna, Austria</li>
+    <li>Computer Science/Software Engineering, <strong><a href="https://www.unicusano.it/en/" target="_blank" rel="noopener noreferrer">Università degli Studi Niccolò Cusano</a></strong> (02/2023 – 07/2023) · Rome, Italy</li>
+    <li>Bachelor of Science (BSc) Software Engineering, <strong><a href="https://www.ieu.edu.tr/en" target="_blank" rel="noopener noreferrer">Izmir University of Economics</a></strong> (08/2020 – 07/2024) · Izmir, Türkiye · GPA 3.16/4.00</li>
+    <li>High School, <strong><a href="https://izmirbal.meb.k12.tr/" target="_blank" rel="noopener noreferrer">Bornova Anatolian High School</a></strong> (09/2016 – 06/2020) · Izmir, Türkiye · GPA 95.79/100.00</li>
+  </ul>
+
+  <h3>Professional Experience</h3>
+  <ul>
+    <li>Student Mentor, <strong><a href="https://www.ieu.edu.tr/en" target="_blank" rel="noopener noreferrer">Izmir University of Economics</a></strong> (08/2023 – 03/2024)</li>
+    <li>Product Development Team – Software Solutions Engineer, <strong><a href="https://monovi.com.tr/" target="_blank" rel="noopener noreferrer">Monovi Bilgi Teknolojileri</a></strong> (08/2023 – 09/2023)</li>
+  </ul>
+
+  <h3>Achievements</h3>
+  <ul>
+    <li><a href="https://ieeexplore.ieee.org/document/10757054" target="_blank" rel="noopener noreferrer">IEEE-published paper: “Analyzing Traffic Patterns in Izmir”</a></li>
+    <li><a href="https://www.ieu.edu.tr/en/news/type/read/id/9180" target="_blank" rel="noopener noreferrer">2nd Place – “Genç Beyinler Yeni Fikirler” (2024)</a></li>
+    <li>Honour Student, Izmir University of Economics (2020–2024)</li>
+    <li>4th year Spring Term Honour Student (2024)</li>
+    <li>4th year Fall Term Honour Student (2023)</li>
+    <li>3rd year Spring Term Honour Student (2023)</li>
+    <li>2nd year Spring Term Honour Student (2022)</li>
+    <li>1st year Spring Term Honour Student (2021)</li>
+    <li>1st year Fall Term Honour Student (2020)</li>
+  </ul>
+
+  <p class="cv-download"><a href="images/Resume_KaanNakipoglu.pdf" target="_blank" rel="noopener noreferrer">⬇︎ Download Full CV</a></p>
+</section>
+
+
+<!-- ───────── SKILLS ───────── -->
+<section id="skills" class="card">
+  <h2>Skills</h2>
+  <ul class="skills-list">
+    <li>Claude Code</li><li>OpenAI Codex</li><li>Agentic Development</li>
+    <li>Large Language Models (LLMs)</li><li>Generative AI</li><li>Prompt Engineering</li>
+    <li>Google Vertex AI</li><li>Gemini</li><li>LangChain</li><li>LangGraph</li>
+    <li>Natural Language Processing</li><li>Named Entity Recognition</li><li>spaCy</li>
+    <li>FastAPI</li><li>Docker</li><li>pytest</li><li>Model Evaluation</li>
+    <li>Feature Engineering</li><li>LightGBM</li><li>TF-IDF</li><li>Kaggle</li>
+    <li>Riverpod</li><li>Formal Methods</li><li>Z3</li>
+    <li>Java</li><li>C</li><li>Python</li><li>SQL</li><li>OOP</li><li>Git</li>
+    <li>Software Design</li><li>.NET</li><li>JavaScript</li><li>C#</li><li>CSS</li>
+    <li>Flutter</li><li>Machine Learning Algorithms</li><li>Algorithm Design</li>
+    <li>Data Structures</li><li>Database Design</li><li>UML</li><li>Rest API</li>
+    <li>Web Development</li><li>Firebase</li><li>Leadership</li><li>Team Player</li>
+    <li>Software Architecture</li><li>Microsoft Office</li><li>MAUI</li><li>XML</li>
+    <li>Bootstrap</li><li>HTML</li><li>Dart</li><li>Kotlin</li><li>Communication</li>
+    <li>Management</li><li>MVC</li><li>Enterprise Architect</li><li>MySQL</li>
+    <li>SQLite</li><li>Mobile Development</li><li>ASP.NET Core</li><li>Scrum</li>
+    <li>Agile Development</li><li>SRS</li><li>Software Testing</li><li>Data Science</li>
+    <li>Analytical Thinking</li><li>Design Patterns</li><li>Desktop App Dev</li>
+    <li>Data Analysis</li><li>Node.js</li><li>Vue.js</li><li>NoSQL</li><li>Java FX</li>
+    <li>Java Swing</li><li>Frontend Development</li><li>Fullstack Development</li>
+    <li>Backend Development</li><li>Microsoft SQL Server</li><li>Game Design</li>
+    <li>Tabletop Simulator</li>
+  </ul>
+</section>
+
+
+<!-- ───────── PROJECTS ───────── -->
+<section id="projects" class="card">
+  <h2>Projects</h2>
+  <p class="tip"><em>Hover or tap a project to see which skills I used.</em></p>
+
+  <ul class="projects-list">
+    <!-- Newest and featured work -->
+    <li class="project-item featured-project">
+      <div class="project-title">
+        <a href="https://github.com/thechuong98/tuw-applied-gen-ai-2026s" target="_blank" rel="noopener noreferrer"
+           data-skills="Agentic Development,Git,Claude Code,Large Language Models (LLMs),Generative AI,Google Vertex AI,Gemini,LangChain,LangGraph,spaCy,Natural Language Processing,Named Entity Recognition,Prompt Engineering,FastAPI,Docker,pytest,Software Testing,Model Evaluation">
+          Semantic Anonymizer
+        </a>
+        <span class="project-tag">Latest</span>
+      </div>
+      <div class="project-description">Adversarial, privacy-focused LLM anonymization system with Defender, Attacker, and Judge agents (TU Wien, 2026)</div>
+    </li>
+
+    <li class="project-item featured-project">
+      <div class="project-title">
+        <a href="https://www.kaggle.com/kaannakipoglu" target="_blank" rel="noopener noreferrer"
+           data-skills="Python,Kaggle,Machine Learning Algorithms,Data Science,LightGBM,TF-IDF,Feature Engineering,Model Evaluation,Analytical Thinking">
+          Trendyol E-Commerce Competition
+        </a>
+      </div>
+      <div class="project-description">Developed retrieval, reranking, feature engineering, and ensembling pipelines for the 2026 Trendyol E Commerce Competition</div>
+    </li>
+
+    <!-- Earlier work -->
+    <li class="project-item">
+      <div class="project-title">
+        <a href="https://www.kaannakipoglu.com" target="_blank" rel="noopener noreferrer"
+           data-skills="HTML,CSS,JavaScript,Responsive Design,UI/UX,Version Control,Git,Web Development">
+          Kaan Nakipoglu Website
+        </a>
+      </div>
+      <div class="project-description">Personal portfolio (2024)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <a href="https://github.com/KaanNakipoglu/NakipsPDFMerger" target="_blank" rel="noopener noreferrer"
+           data-skills="Git,Desktop App Development,Python,Software Design,Analytical Thinking">
+          NakipsPDFMerger
+        </a>
+      </div>
+      <div class="project-description">Desktop PDF merger (2024)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <a href="https://ieeexplore.ieee.org/document/10757054" target="_blank" rel="noopener noreferrer"
+           data-skills="Git,Python,Data Analysis,Data Science,Analytical Thinking,Communication,Team Player,Machine Learning Algorithms,Algorithm Design,Scrum,Agile Development">
+          Analyzing Traffic Patterns in Izmir
+        </a>
+      </div>
+      <div class="project-description">IEEE-published congestion study (2024)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Git,Mobile Development,Flutter,Dart,Analytical Thinking,Leadership,Management,SRS,Enterprise Architect,CSS,JavaScript,HTML,Web Development,Software Design,Software Architecture,Firebase,UML,NoSQL,OOP,Algorithm Design,Communication,Scrum,Agile Development,Node.js,Software Testing,MVC,Fullstack Development">
+          Divine
+        </strong>
+      </div>
+      <div class="project-description">Performer–crowd interaction system (2023–present)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <a href="https://github.com/KaanNakipoglu/DotsAndLinesSquareGame" target="_blank" rel="noopener noreferrer"
+           data-skills="Git,Java,OOP,SQLite,Database Design,SRS,Software Design,Team Player,Analytical Thinking,Algorithm Design,UML,Enterprise Architect,Scrum,Agile Mobile Development,Flutter,Dart,Leadership,Management,CSS,JavaScript,HTML,Web Development,Python,Software Architecture,Firebase,NoSQL,Algorithm Design,Communication,Software Testing,SQL,Desktop App Development,Java FX,Fullstack Development,Design Patterns">
+          DotsAndLinesSquareGame
+        </a>
+      </div>
+      <div class="project-description">Multiplayer square-forming game (2023)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Git,Rest API,JavaScript,HTML,CSS,Web Development,Team Player,.NET,Mobile Development,MAUI,SRS,Software Design,Analytical Thinking,Scrum,C#,Software Architect,Database Design,SQL,Microsoft SQL Server">
+          Skill Sharing Project
+        </strong>
+      </div>
+      <div class="project-description">Platform for sharing skills &amp; courses (2023)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Git,SRS,Software Design,Enterprise Architect,UML,Leadership,Analytical Thinking,Database Design,Algorithm Design,Communication">
+          Gas Distribution System (GDS)
+        </strong>
+      </div>
+      <div class="project-description">Logistics order-automation software (2022-23)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Git,Flutter,Dart,Firebase,NoSQL,Fullstack Development,Mobile Development,Algorithm Design">
+          Cocktailous
+        </strong>
+      </div>
+      <div class="project-description">Cocktail-themed mobile app (2022-23)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="SRS,Game Design,Tabletop Simulator,Leadership,Communication">
+          Z!NK
+        </strong>
+      </div>
+      <div class="project-description">Board-game design (2022)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <a href="https://github.com/KaanNakipoglu/SimpleATM" target="_blank" rel="noopener noreferrer"
+           data-skills="Java,OOP">
+          SimpleATM
+        </a>
+      </div>
+      <div class="project-description">ATM simulation program (2022)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Git,Java,SRS,Leadership,Software Design,Analytical Thinking,Communication,OOP,UML,Enterprise Architect,Scrum,Agile Development,Software Architect">
+          Eventful
+        </strong>
+      </div>
+      <div class="project-description">Social-media project (2022)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Leadership,UML,Management,Analytical Thinking,Communication,SRS">
+          Green Campus
+        </strong>
+      </div>
+      <div class="project-description">Clean-energy campus project (2022)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <a href="https://github.com/KaanNakipoglu/ColorMapping" target="_blank" rel="noopener noreferrer"
+           data-skills="Git,Python,Algorithm Design,Leadership,Management,Scrum,Agile Development,Fullstack Development,SRS,Desktop App Development">
+          Graph Coloring Problem
+        </a>
+      </div>
+      <div class="project-description">Graph-coloring algorithm program (2022)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <a href="https://github.com/KaanNakipoglu/TextBasedDungeonGame" target="_blank" rel="noopener noreferrer"
+           data-skills="Git,Java,SRS,Game Design,OOP,Leadership,Management,Scrum,Agile Development,Fullstack Development,Software Design,Software Architecture,UML,Algorithm Design">
+          Hero of the Dungeon
+        </a>
+      </div>
+      <div class="project-description">Text-based RPG game (2021)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Git,Java,SRS,Leadership,Software Design,Analytical Thinking,Communication,OOP,UML,Enterprise Architect,Scrum,Agile Development,Software Architect">
+          Seabin
+        </strong>
+      </div>
+      <div class="project-description">Clean-environment project (2021)</div>
+    </li>
+
+    <li class="project-item">
+      <div class="project-title">
+        <strong data-skills="Git,Java,SRS,Game Design,OOP,Leadership,Management,Scrum,Agile Development,Fullstack Development,Software Design,Software Architecture,UML,Algorithm Design">
+          The Cave
+        </strong>
+      </div>
+      <div class="project-description">Text-based RPG game (2020)</div>
+    </li>
+  </ul>
+</section>
+
+
+<!-- ───────── CONTACT ───────── -->
+<section id="contact" class="card contact-form">
+  <h2>Contact</h2>
+
+  <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="dc02a0e7-85bf-496d-98ba-c15079d4d8f6">
+    <input type="hidden" name="_subject" id="hidden-subject" value="Inquiry">
+
+    <div class="field">
+      <label>Name
+        <input type="text" name="name" id="nameField" required>
+      </label>
     </div>
 
-    <footer>
-        <p>&copy; <span id="year"></span> - Kaan Nakipoğlu</p>
-    </footer>
+    <div class="field">
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+    </div>
 
-    <script>
-        document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-    });
+    <div class="field">
+      <label>Subject
+        <select name="subject" id="subjectField" required>
+          <option value="" disabled selected>Select a subject</option>
+          <option>Job Offer</option>
+          <option>Project Offer</option>
+          <option>Question</option>
+          <option>General Contact</option>
+        </select>
+      </label>
+    </div>
 
-    document.addEventListener('keydown', function (e) {
-        if (e.keyCode == 123) {
-            e.preventDefault();
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-            e.preventDefault();
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-            e.preventDefault();
-        }
-        if (e.ctrlKey && e.keyCode == 85) {
-            e.preventDefault();
-        }
-    });
-                document.getElementById('year').textContent = new Date().getFullYear();
+    <div class="field full">
+      <label>Message
+        <textarea name="message" required></textarea>
+      </label>
+    </div>
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const projectItems = document.querySelectorAll('.project-item');
-            const skillItems = document.querySelectorAll('.skills-list li');
-            let hoverEnabled = true;
-            let clickTimeout;
+    <button type="submit">Send</button>
+  </form>
 
-            function clearActiveSkills() {
-                skillItems.forEach(item => item.classList.remove('active'));
-            }
+  <p class="tip">Powered by <a href="https://web3forms.com/" target="_blank" rel="noopener noreferrer">Web3Forms</a></p>
+</section>
 
-            function setActiveSkills(skills) {
-                clearActiveSkills();
-                skills.forEach(skill => {
-                    skillItems.forEach(item => {
-                        if (item.textContent.trim().toLowerCase() === skill.trim().toLowerCase()) {
-                            item.classList.add('active');
-                        }
-                    });
-                });
-            }
 
-            function handleProjectInteraction(event, isClick) {
-                const projectItem = event.currentTarget;
-                const linkElement = projectItem.querySelector('.project-title a');
-                const strongElement = projectItem.querySelector('.project-title strong');
-                const skillsData = linkElement ? linkElement.dataset.skills : (strongElement ? strongElement.dataset.skills : null);
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <small>© <span id="year"></span> – Kaan Nakipoğlu</small>
+</footer>
 
-                if (skillsData) {
-                    const skills = skillsData.split(',');
-
-                    if (isClick) {
-                        hoverEnabled = false;
-                        clearTimeout(clickTimeout);
-                        setActiveSkills(skills);
-
-                        const skillsSection = document.querySelector('.skills-list');
-                        if (skillsSection) {
-                            skillsSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-
-                        clickTimeout = setTimeout(() => {
-                            clearActiveSkills();
-                            hoverEnabled = true;
-                        }, 5000);
-
-                        if (linkElement) {
-                            return true;
-                        }
-                    } else if (hoverEnabled) {
-                        setActiveSkills(skills);
-                    }
-                }
-
-                if (!linkElement || !isClick) {
-                    event.preventDefault();
-                }
-            }
-
-            projectItems.forEach(item => {
-                item.addEventListener('mouseenter', (event) => handleProjectInteraction(event, false));
-                item.addEventListener('mouseleave', () => {
-                    if (hoverEnabled) {
-                        clearActiveSkills();
-                    }
-                });
-                item.addEventListener('click', (event) => handleProjectInteraction(event, true));
-            });
-        });
-    </script>
+<!-- ───────── JS ───────── -->
+<script src="js/site.js"></script>
 </body>
 </html>
